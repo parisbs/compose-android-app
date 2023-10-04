@@ -1,16 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin)
+    kotlin("kapt")
+    alias(libs.plugins.hilt)
 }
 
 android {
     namespace = "com.example.compose"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.compose"
-        minSdk = 24
-        targetSdk = 33
+        minSdk = 27
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0.0"
 
@@ -31,12 +33,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     buildFeatures {
@@ -54,15 +56,23 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.ktx)
     implementation(libs.androidx.activity.compose)
+
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.uiGraphics)
     implementation(libs.androidx.compose.uiToolingPreview)
     implementation(libs.androidx.compose.material3)
+
+    implementation(libs.hilt.core)
+    kapt(libs.hilt.compiler)
 
     debugImplementation(libs.androidx.compose.debug.uiTooling)
     debugImplementation(libs.androidx.compose.debug.uiTestManifest)

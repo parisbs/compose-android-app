@@ -17,13 +17,15 @@ dependencyResolutionManagement {
 
     versionCatalogs {
         create("libs") {
-            version("agp", "8.1.1")
+            // Plugin versions
+            version("agp", "8.1.2")
             version("kotlin", "1.8.10")
 
-            version("androidx-activity", "1.7.0")
-            version("androidx-composeBOM", "2023.03.00")
-            version("androidx-core", "1.9.0")
-            version("androidx-lifecycle", "2.6.1")
+            version("androidx-activity", "1.7.2")
+            version("androidx-composeBOM", "2023.09.02")
+            version("androidx-core", "1.12.0")
+            version("androidx-lifecycle", "2.6.2")
+            version("hilt", "2.48")
 
             // Test versions
             version("androidx-test-espresso", "3.5.1")
@@ -32,6 +34,7 @@ dependencyResolutionManagement {
 
             plugin("android-application", "com.android.application").versionRef("agp")
             plugin("kotlin", "org.jetbrains.kotlin.android").versionRef("kotlin")
+            plugin("hilt", "com.google.dagger.hilt.android").versionRef("hilt")
 
             library("androidx-activity-compose", "androidx.activity", "activity-compose")
                 .versionRef("androidx-activity")
@@ -43,6 +46,8 @@ dependencyResolutionManagement {
             library("androidx-core-ktx", "androidx.core", "core-ktx").versionRef("androidx-core")
             library("androidx-lifecycle-ktx", "androidx.lifecycle", "lifecycle-runtime-ktx")
                 .versionRef("androidx-lifecycle")
+            library("hilt-core", "com.google.dagger", "hilt-android").versionRef("hilt")
+            library("hilt-compiler", "com.google.dagger", "hilt-android-compiler").versionRef("hilt")
 
             // Debug dependencies
             library("androidx-compose-debug-uiTooling", "androidx.compose.ui", "ui-tooling").withoutVersion()
